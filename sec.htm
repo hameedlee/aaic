@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secondary School</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    /* Custom styles for better responsiveness */
+    .dropdown-menu {
+      transform: translateY(10px);
+      transition: all 0.3s ease-in-out;
+    }
+    
+    .dropdown:hover .dropdown-menu {
+      transform: translateY(0);
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    @media (max-width: 768px) {
+      .mobile-menu-item.active .mobile-submenu {
+        display: block;
+      }
+    }
+  </style>
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body class="bg-green-400 text-white font-sans min-h-screen flex flex-col">
+
+  <!-- HEADER / HERO TOP -->
+  <header class="container mx-auto p-4 text-center">
+    <img src="logo.png" alt="School Logo" class="mx-auto mb-3 h-16 sm:h-20 md:h-24 lg:h-32">
+    <p class="text-sm sm:text-base md:text-lg lg:text-xl font-medium">Learning today. Leading tomorrow. Inspired Forever.</p>
+    
+    <!-- Social Links -->
+    <div class="flex justify-center space-x-4 sm:space-x-6 my-3 sm:my-4 text-base sm:text-lg">
+      <a href="#" class="hover:text-gray-200 transition duration-300"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" class="hover:text-gray-200 transition duration-300"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="hover:text-gray-200 transition duration-300"><i class="fab fa-instagram"></i></a>
+    </div>
+
+    <!-- Search Bar -->
+    <div class="flex justify-center mb-4 sm:mb-6">
+      <input type="text" placeholder="Search..." class="p-2 w-40 sm:w-48 md:w-64 lg:w-80 rounded-l bg-white text-black focus:outline-none">
+      <button class="bg-yellow-500 px-3 sm:px-4 py-2 rounded-r hover:bg-yellow-600 transition duration-300">Search</button>
+    </div>
+  </header>
+
+  <!-- NAVBAR -->
+  <nav class="bg-white shadow-md text-gray-800 sticky top-0 z-50">
+    <div class="container mx-auto flex justify-between items-center px-4 sm:px-6 py-3">
+      <!-- Logo / Home -->
+      <a href="#" class="text-lg sm:text-xl font-bold text-green-600">Home</a>
+
+      <!-- Hamburger Button (Mobile) -->
+      <button id="menu-btn" class="lg:hidden text-gray-700 focus:outline-none">
+        <i class="fas fa-bars text-xl sm:text-2xl"></i>
+      </button>
+
+      <!-- Desktop Menu -->
+      <ul id="desktop-menu" class="hidden lg:flex space-x-4 xl:space-x-8 font-semibold text-gray-800">
+
+        <!-- About AAIC Dropdown -->
+        <li class="relative dropdown">
+          <button class="hover:text-green-400 flex items-center transition duration-300">About AAIC <i class="fas fa-chevron-down ml-1 text-xs"></i></button>
+          <ul class="dropdown-menu absolute left-0 mt-2 w-56 bg-green-400 text-white rounded-lg shadow-lg opacity-0 invisible transition duration-300">
+            <li><a href="#" class="block px-4 py-2 hover:bg-green-200 transition duration-300">Our School</a></li>
+            <li><a href="#" class="block px-4 py-2 hover:bg-green-200 transition duration-300">Board of Directors</a></li>
+            <li><a href="#" class="block px-4 py-2 hover:bg-green-200 transition duration-300">Mission, Vision, and Values</a></li>
+            <li><a href="#" class="block px-4 py-2 hover:bg-green-200 transition duration-300">Administration & Staff</a></li>
+            <li><a href="#" class="block px-4 py-2 hover:bg-green-200 transition duration-300">Principal's Message</a></li>
+          </ul>
+        </li>
+
+        <!-- Admissions Dropdown -->
+        <li class="relative dropdown">
+          <button class="hover:text-green-400 flex items-center transition duration-300">Admissions <i class="fas fa-chevron-down ml-1 text-xs"></i></button>
+          <ul class="dropdown-menu absolute left-0 mt-2 w-64 bg-green-400 text-white rounded-lg shadow-lg opacity-0 invisible transition duration-300">
+            <li><a href="#" class="block px-4 py-2 hover:bg-green-200 transition duration-300">General Admissions Policy</a></li>
+            <li><a href="#" class="block px-4 py-2 hover:bg-green-200 transition duration-300">Registration Requirements</a></li>
+            <li><a href="#" class="block px-4 py-2 hover:bg-green-200 transition duration-300">Admissions Process</a></li>
+            <li><a href="#" class="block px-4 py-2 hover:bg-green-200 transition duration-300">Online Applications</a></li>
+            <li><a href="#" class="block px-4 py-2 hover:bg-green-200 transition duration-300">Tuition & Fees</a></li>
+          </ul>
+        </li>
+
+        <!-- Academics Dropdown -->
+        <li class="relative dropdown">
+          <button class="hover:bg-green-400 flex items-center transition duration-300">Academics <i class="fas fa-chevron-down ml-1 text-xs"></i></button>
+          <ul class="dropdown-menu absolute left-0 mt-2 w-56 bg-green-400 text-white rounded-lg shadow-lg opacity-0 invisible transition duration-300">
+            <li><a href="#" class="block px-4 py-2 hover:bg-green-200 transition duration-300">Curriculum</a></li>
+            <li><a href="#" class="block px-4 py-2 hover:bg-green-200 transition duration-300">Departments</a></li>
+            <li><a href="#" class="block px-4 py-2 hover:bg-green-200 transition duration-300">Library</a></li>
+          </ul>
+        </li>
+
+        <!-- Summer Camp -->
+        <li><a href="#" class="hover:text-green-400 transition duration-300">Summer Camp</a></li>
+
+        <!-- Student Life Dropdown -->
+        <li class="relative dropdown">
+          <button class="hover:bg-green-400 flex items-center transition duration-300">Student Life <i class="fas fa-chevron-down ml-1 text-xs"></i></button>
+          <ul class="dropdown-menu absolute left-0 mt-2 w-64 bg-green-400 text-white rounded-lg shadow-lg opacity-0 invisible transition duration-300">
+            <li><a href="#" class="block px-4 py-2 hover:bg-green-200 transition duration-300">Clubs</a></li>
+            <li><a href="#" class="block px-4 py-2 hover:bg-green-200 transition duration-300">Sports</a></li>
+            <li><a href="#" class="block px-4 py-2 hover:bg-green-200 transition duration-300">Events</a></li>
+          </ul>
+        </li>
+
+        <!-- Parents -->
+        <li class="relative dropdown">
+          <button class="hover:bg-green-400 flex items-center transition duration-300">Parent<i class="fas fa-chevron-down ml-1 text-xs"></i></button>
+           <ul class="dropdown-menu absolute left-0 mt-2 w-64 bg-green-400 text-white rounded-lg shadow-lg opacity-0 invisible transition duration-300">
+            <li><a href="#" class="block px-4 py-2 hover:bg-green-200 transition duration-300">Parent Resources</a></li>
+            <li><a href="#" class="block px-4 py-2 hover:bg-green-200 transition duration-300">Parent-Teacher Association</a></li>
+            <li><a href="#" class="block px-4 py-2 hover:bg-green-200 transition duration-300">Volunteer Opportunities</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Mobile Dropdown -->
+    <div id="mobile-menu" class="lg:hidden hidden px-4 sm:px-6 pb-4 space-y-3 bg-white">
+      <!-- Home -->
+      <div class="py-2">
+        <a href="#" class="block text-lg font-medium text-gray-800 hover:text-green-600 transition duration-300">Home</a>
+      </div>
+      
+      <!-- About -->
+      <div class="mobile-menu-item">
+        <button class="flex justify-between items-center w-full py-2 text-lg font-medium text-gray-800 hover:text-green-600 transition duration-300">
+          <span>About AAIC</span>
+          <i class="fas fa-chevron-down text-sm toggle-icon"></i>
+        </button>
+        <div class="mobile-submenu hidden bg-green-100 rounded-lg shadow-inner p-3 mt-1 space-y-2 text-gray-800">
+          <a href="#" class="block py-1 px-2 hover:bg-green-200 rounded transition duration-300">Board of Directors</a>
+          <a href="#" class="block py-1 px-2 hover:bg-green-200 rounded transition duration-300">Our School</a>
+          <a href="#" class="block py-1 px-2 hover:bg-green-200 rounded transition duration-300">Mission, Vision, and Values</a>
+          <a href="#" class="block py-1 px-2 hover:bg-green-200 rounded transition duration-300">Administration & Staff</a>
+          <a href="#" class="block py-1 px-2 hover:bg-green-200 rounded transition duration-300">Principal's Message</a>
+          <a href="#" class="block py-1 px-2 hover:bg-green-200 rounded transition duration-300">Student Transportation</a>
+          <a href="#" class="block py-1 px-2 hover:bg-green-200 rounded transition duration-300">Calendar</a>
+          <a href="#" class="block py-1 px-2 hover:bg-green-200 rounded transition duration-300">Careers</a>
+          <a href="#" class="block py-1 px-2 hover:bg-green-200 rounded transition duration-300">Contact Us</a>
+        </div>
+      </div>
+      
+      <!-- Admissions -->
+      <div class="mobile-menu-item">
+        <button class="flex justify-between items-center w-full py-2 text-lg font-medium text-gray-800 hover:text-green-600 transition duration-300">
+          <span>Admissions</span>
+          <i class="fas fa-chevron-down text-sm toggle-icon"></i>
+        </button>
+        <div class="mobile-submenu hidden bg-green-100 rounded-lg shadow-inner p-3 mt-1 space-y-2 text-gray-800">
+          <a href="#" class="block py-1 px-2 hover:bg-green-200 rounded transition duration-300">General Admissions Policy</a>
+          <a href="#" class="block py-1 px-2 hover:bg-green-200 rounded transition duration-300">Registration Requirements</a>
+          <a href="#" class="block py-1 px-2 hover:bg-green-200 rounded transition duration-300">Admissions Process</a>
+          <a href="#" class="block py-1 px-2 hover:bg-green-200 rounded transition duration-300">Online Application</a>
+          <a href="#" class="block py-1 px-2 hover:bg-green-200 rounded transition duration-300">Tuition & Fees</a>
+        </div>
+      </div>
+      
+      <!-- Academics -->
+      <div class="mobile-menu-item">
+        <button class="flex justify-between items-center w-full py-2 text-lg font-medium text-gray-800 hover:text-green-600 transition duration-300">
+          <span>Academics</span>
+          <i class="fas fa-chevron-down text-sm toggle-icon"></i>
+        </button>
+        <div class="mobile-submenu hidden bg-green-100 rounded-lg shadow-inner p-3 mt-1 space-y-2 text-gray-800">
+          <a href="#" class="block py-1 px-2 hover:bg-green-200 rounded transition duration-300">Kindergarten</a>
+          <a href="#" class="block py-1 px-2 hover:bg-green-200 rounded transition duration-300">Primary School</a>
+          <a href="#" class="block py-1 px-2 hover:bg-green-200 rounded transition duration-300">Secondary School</a>
+        </div>
+      </div>
+      
+      <!-- Summer Camp -->
+      <div class="py-2">
+        <a href="#" class="block text-lg font-medium text-gray-800 hover:text-green-600 transition duration-300">Summer Camp</a>
+      </div>
+      
+      <!-- Student Life -->
+      <div class="mobile-menu-item">
+        <button class="flex justify-between items-center w-full py-2 text-lg font-medium text-gray-800 hover:text-green-600 transition duration-300">
+          <span>Student Life</span>
+          <i class="fas fa-chevron-down text-sm toggle-icon"></i>
+        </button>
+        <div class="mobile-submenu hidden bg-green-100 rounded-lg shadow-inner p-3 mt-1 space-y-2 text-gray-800">
+          <a href="#" class="block py-1 px-2 hover:bg-green-200 rounded transition duration-300">Clubs & Activities</a>
+          <a href="#" class="block py-1 px-2 hover:bg-green-200 rounded transition duration-300">Sports</a>
+          <a href="#" class="block py-1 px-2 hover:bg-green-200 rounded transition duration-300">School Events</a>
+          <a href="#" class="block py-1 px-2 hover:bg-green-200 rounded transition duration-300">Hour of Code</a>
+        </div>
+      </div>
+      
+      <!-- Parents -->
+      <div class="mobile-menu-item">
+        <button class="flex justify-between items-center w-full py-2 text-lg font-medium text-gray-800 hover:text-green-600 transition duration-300">
+          <span>Parents</span>
+          <i class="fas fa-chevron-down text-sm toggle-icon"></i>
+        </button>
+        <div class="mobile-submenu hidden bg-green-100 rounded-lg shadow-inner p-3 mt-1 space-y-2 text-gray-800">
+          <a href="#" class="block py-1 px-2 hover:bg-green-200 rounded transition duration-300">Parent Resources</a>
+          <a href="#" class="block py-1 px-2 hover:bg-green-200 rounded transition duration-300">Parent-Teacher Association</a>
+          <a href="#" class="block py-1 px-2 hover:bg-green-200 rounded transition duration-300">Volunteer Opportunities</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO BANNER -->
+  <section class="relative w-full h-48 sm:h-64 md:h-80 lg:h-96 xl:h-screen bg-cover bg-center" style="background-image: url('olumo.JPG');">
+    <div class="absolute inset-0 bg-gray-900 bg-opacity-60 flex items-center justify-center">
+      <div class="text-center px-4">
+        <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold font-serif text-green-300 mb-2 sm:mb-4">SECONDARY SCHOOL</h1>
+        <p class="text-xs sm:text-sm md:text-base lg:text-lg text-white">Home / Secondary School</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTENT SECTION -->
+  <section class="bg-white text-black p-4 sm:p-6 md:p-8 lg:p-12">
+    <h2 class="text-xl sm:text-2xl md:text-3xl font-bold text-center text-green-600 mb-4 sm:mb-6">THE FINAL YEAR</h2>
+    <p class="text-sm sm:text-base md:text-lg leading-relaxed max-w-3xl mx-auto">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, qui reiciendis ex sint optio unde natus adipisci ullam odio ipsa provident itaque placeat officiis nesciunt excepturi eveniet nemo tenetur...
+    </p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-green-400 text-white py-6 sm:py-8 md:py-10 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+      
+      <!-- Left Links -->
+      <div class="space-y-4">
+        <div class="grid grid-cols-2 gap-4">
+          <div class="space-y-2">
+            <a href="#" class="block hover:underline transition duration-300">Home</a>
+            <a href="#" class="block hover:underline transition duration-300">Admissions</a>
+            <a href="#" class="block hover:underline transition duration-300">Student Life</a>
+            <a href="#" class="block hover:underline transition duration-300">Contact Us</a>
+          </div>
+          <div class="space-y-2">
+            <a href="#" class="block hover:underline transition duration-300">About LIS</a>
+            <a href="#" class="block hover:underline transition duration-300">Academics</a>
+            <a href="#" class="block hover:underline transition duration-300">Parents</a>
+          </div>
+        </div>
+        <p class="text-xs sm:text-sm">21, Ajegunle Street, Ogun State, Nigeria</p>
+      </div>
+
+      <!-- Center Logo -->
+      <div class="flex justify-center items-center">
+        <img src="logo.png" alt="School Logo" class="h-20 sm:h-24 md:h-28 lg:h-32">
+      </div>
+
+      <!-- Right Side -->
+      <div class="space-y-4 sm:space-y-6">
+        <!-- Social Icons -->
+        <div class="flex space-x-4 justify-center md:justify-start">
+          <a href="#" class="transition duration-300"><i class="fab fa-facebook-f text-xl sm:text-2xl hover:text-gray-300"></i></a>
+          <a href="#" class="transition duration-300"><i class="fab fa-youtube text-xl sm:text-2xl hover:text-gray-300"></i></a>
+          <a href="#" class="transition duration-300"><i class="fab fa-linkedin text-xl sm:text-2xl hover:text-gray-300"></i></a>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="relative">
+          <input type="text" placeholder="Search..." class="w-full rounded-sm px-3 py-2 text-black focus:outline-none">
+          <span class="absolute right-3 top-2.5 text-gray-500"><i class="fas fa-search"></i></span>
+        </div>
+
+        <p class="text-xs text-center md:text-left">© 2025 Allahu Akbar International School. All Rights Reserved</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPT -->
+  <script>
+    // Mobile menu toggle
+    const menuBtn = document.getElementById("menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+    
+    menuBtn.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+    });
+    
+    // Mobile submenu toggles
+    const mobileMenuItems = document.querySelectorAll(".mobile-menu-item");
+    
+    mobileMenuItems.forEach(item => {
+      const button = item.querySelector("button");
+      const submenu = item.querySelector(".mobile-submenu");
+      const icon = item.querySelector(".toggle-icon");
+      
+      button.addEventListener("click", () => {
+        submenu.classList.toggle("hidden");
+        icon.classList.toggle("fa-chevron-down");
+        icon.classList.toggle("fa-chevron-up");
+      });
+    });
+    
+    // Handle window resize - show desktop menu if window is resized larger
+    window.addEventListener("resize", () => {
+      if (window.innerWidth >= 1024) { // lg breakpoint
+        mobileMenu.classList.add("hidden");
+      }
+    });
+  </script>
+</body>
+</html>
