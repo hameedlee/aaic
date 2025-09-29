@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign up for Allahu Akbar International School</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Best practice: Embed custom styles to avoid multiple requests if needed, or put them in a separate CSS file. -->
+  <style>
+    .logo {
+      height: 40px; /* Adjust size of your logo */
+      width: auto;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-100 flex flex-col min-h-screen dark:bg-gray-900">
+
+  <!-- ========================
+       NAVIGATION BAR
+       ======================== -->
+  <!-- Navigation Bar -->
+<nav class="bg-white shadow-lg sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center py-4">
+    <div class="flex items-center space-x-2">
+      <img src="Untitled design.png" alt="School Logo" class="logo" />
+    </div>
+
+    <!-- Desktop Menu -->
+    <div class="hidden md:flex space-x-6 text-sm lg:text-base">
+      <a href="about.htm" class="text-gray-600 hover:text-emerald-700">About Us</a>
+      <a href="#academics" class="text-gray-600 hover:text-emerald-700">Academics</a>
+      <a href="#features" class="text-gray-600 hover:text-emerald-700">Features</a>
+      <a href="#contact" class="text-gray-600 hover:text-emerald-700">Contact</a>
+      <a href="signup.htm" class="text-gray-600 hover:text-emerald-700">Student Portal</a>
+      <a href="gallery.htm" class="text-gray-600 hover:text-emerald-700">Gallery</a>
+    </div>
+
+    <a href="appli.htm" class="hidden md:inline-block bg-emerald-700 text-white px-5 py-2 rounded-full hover:bg-emerald-800 shadow-md transition">Enroll Now</a>
+
+    <!-- Mobile Button -->
+    <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-emerald-700 focus:outline-none">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        <path id="close-icon" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="mobile-menu md:hidden bg-white shadow-lg">
+    <div class="px-6 py-4 space-y-2 text-sm">
+      <a href="index.htm" class="mobile-menu-link block text-gray-600 hover:text-emerald-700">Home</a>
+      <a href="about.htm" class="mobile-menu-link block text-gray-600 hover:text-emerald-700">About Us</a>
+      <a href="#academics" class="mobile-menu-link block text-gray-600 hover:text-emerald-700">Academics</a>
+      <a href="#features" class="mobile-menu-link block text-gray-600 hover:text-emerald-700">Features</a>
+      <a href="#contact" class="mobile-menu-link block text-gray-600 hover:text-emerald-700">Contact</a>
+      <a href="signup.htm" class="mobile-menu-link block text-gray-600 hover:text-emerald-700">Student Portal</a>
+      <a href="gallery.htm" class="mobile-menu-link block text-gray-600 hover:text-emerald-700">Gallery</a>
+      <a href="appli.htm" class="mobile-menu-link block bg-emerald-700 text-white px-5 py-2 rounded-full text-center mt-4 hover:bg-emerald-800">Enroll Now</a>
+    </div>
+  </div>
+</nav>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuIcon = document.getElementById('menu-icon');
+  const closeIcon = document.getElementById('close-icon');
+  const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
+
+  // Toggle mobile menu
+  function toggleMobileMenu() {
+    const isOpen = !mobileMenu.classList.contains('mobile-menu-closed');
+    
+    if (isOpen) {
+      closeMobileMenu();
+    } else {
+      openMobileMenu();
+    }
+  }
+
+  // Open mobile menu
+  function openMobileMenu() {
+    mobileMenu.classList.remove('mobile-menu-closed');
+    mobileMenu.classList.add('mobile-menu-open');
+    menuIcon.classList.add('hidden');
+    closeIcon.classList.remove('hidden');
+  }
+
+  // Close mobile menu
+  function closeMobileMenu() {
+    mobileMenu.classList.remove('mobile-menu-open');
+    mobileMenu.classList.add('mobile-menu-closed');
+    menuIcon.classList.remove('hidden');
+    closeIcon.classList.add('hidden');
+  }
+
+  // Mobile menu button click
+  mobileMenuButton.addEventListener('click', toggleMobileMenu);
+
+  // Close mobile menu when clicking on links (for md screens and below)
+  mobileMenuLinks.forEach(link => {
+    link.addEventListener('click', function() {
+      // Check if we're on md screen or below
+      if (window.innerWidth < 768) {
+        closeMobileMenu();
+      }
+    });
+  });
+
+  // Close mobile menu when clicking outside
+  document.addEventListener('click', function(event) {
+    const isClickInsideNav = event.target.closest('nav');
+    const isMenuOpen = mobileMenu.classList.contains('mobile-menu-open');
+    
+    if (!isClickInsideNav && isMenuOpen && window.innerWidth < 768) {
+      closeMobileMenu();
+    }
+  });
+
+  // Close mobile menu on window resize if screen becomes larger
+  window.addEventListener('resize', function() {
+    if (window.innerWidth >= 768) {
+      closeMobileMenu();
+    }
+  });
+
+  // Initialize menu as closed
+  closeMobileMenu();
+});
+</script>
+
+<style>
+.mobile-menu {
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
+}
+
+.mobile-menu-closed {
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.mobile-menu-open {
+  max-height: 400px;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Ensure smooth transitions */
+.mobile-menu-link {
+  transition: color 0.2s ease-in-out;
+}
+</style>
+  <!-- ========================
+       SIGNUP CARD
+       ======================== -->
+  <main class="flex-grow flex items-center justify-center p-4">
+    <div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-sm mx-auto transform hover:scale-105 transition-transform duration-300 dark:bg-gray-800">
+      <div class="text-center">
+        <h1 class="text-3xl font-bold mb-2 text-gray-800 dark:text-white">Create an Account</h1>
+        <p class="text-gray-500 dark:text-gray-400">Get started by creating a new account</p>
+      </div>
+      <form class="mt-8 space-y-6" action="/api/signup" method="POST">
+        <!-- Full Name input -->
+        <div>
+          <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Full Name</label>
+          <input id="name" name="name" type="text" autocomplete="name" required
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:placeholder-gray-500">
+        </div>
+        <!-- Email address input -->
+        <div>
+          <label for="email-signup" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Email address</label>
+          <input id="email-signup" name="email" type="email" autocomplete="email" required
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:placeholder-gray-500">
+        </div>
+        <!-- Password input -->
+        <div>
+          <label for="password-signup" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Password</label>
+          <input id="password-signup" name="password" type="password" autocomplete="new-password" required
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:placeholder-gray-500">
+        </div>
+        <button type="submit"
+          class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors duration-200">
+          Sign up
+        </button>
+        <div class="text-center text-sm text-gray-500 dark:text-gray-400">
+          Already have an account?
+          <a href="/student-portal/login.html" class="font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300">Sign in</a>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <!-- ========================
+       FOOTER
+       ======================== -->
+  <!-- Footer -->
+<footer id="contact" class="bg-white text-gray-600 py-12">
+    <div class="container mx-auto px-6 max-w-6xl">
+        <div class="md:flex md:justify-between grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="mb-6 md:mb-0">
+                <div class="flex items-center space-x-2 mb-4">
+                    <svg class="w-8 h-8 text-emerald-700" fill="currentColor" viewBox="0 0 20 20"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path></svg>
+                    <span class="text-2xl font-semibold text-emerald-900 font-arabic">Allahu Akbar <br>International School</span>
+                </div>
+                <p class="text-gray-500">Motto:"AL QURAN HUDAN LI NASS" Q2VS185.</p>
+            </div>
+            <div>
+                <h4 class="text-lg font-semibold text-emerald-900 mb-4">Quick Links</h4>
+                <ul class="space-y-2">
+                    <li><a href="index.htm" class="hover:text-emerald-700 transition duration-300">Home</a></li>
+                    <li><a href="about.htm" class="hover:text-emerald-700 transition duration-300">About Us</a></li>
+                    <li><a href="#academics" class="hover:text-emerald-700 transition duration-300">Academics</a></li>
+                    <li><a href="#features" class="hover:text-emerald-700 transition duration-300">Our Features</a></li>
+                    <li><a href="signup.htm" class="hover:text-emerald-700 transition duration-300">Student portal</a></li>
+                    <li><a href="gallery.htm" class="hover:text-emerald-700 transition duration-300">Gallery</a></li>
+                    <li><a href="#" class="hover:text-emerald-700 transition duration-300">FAQs</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-semibold text-emerald-900 mb-4">Contact</h4>
+                <address class="space-y-2 not-italic">
+                    <p>21, Ajegunle Street, Sagamu, Ogun State, Nigeria. </p>
+                    <p>0803 351 9155, 0813 938 1306</p>
+                    <p>allahuakbarschools@gmail.com</p>
+                </address>
+            </div>
+        </div>
+        <div class="mt-8 pt-8 border-t border-gray-200 text-center">
+            <p>&copy; 2025 Allahu Akbar International School. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+  <!-- ========================
+       JAVASCRIPT FOR MOBILE MENU
+       ======================== -->
+  
+</body>
+
+</html>

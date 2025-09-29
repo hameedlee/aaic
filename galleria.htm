@@ -1,0 +1,82 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tailwind Image Gallery</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100">
+
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold text-center mb-8">Image Gallery</h1>
+
+        <div id="gallery" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <!-- Images will be inserted here -->
+        </div>
+
+        <div class="text-center mt-10">
+            <button id="loadMore" class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">
+                Load More
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const gallery = document.getElementById('gallery');
+        const loadMoreBtn = document.getElementById('loadMore');
+        // Get the value of the "slug" query parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const slug = urlParams.get('slug');
+
+        //console.log("Slug:", slug); // For testing
+
+        let imageData = [];
+        let currentIndex = 0;
+        const batchSize = 4;
+
+        async function fetchImages() {
+            try {
+                const res = await fetch(`https://galleria.sgm.ng/${slug}`);
+                const data = await res.json();
+
+                // Filter valid image URLs (heuristically checking extensions or content)
+                imageData = Object.values(data).filter(url => {
+                    return url.includes("googleusercontent") || /\.(jpg|jpeg|png|webp|gif)$/i.test(url);
+                });
+
+                renderImages();
+            } catch (error) {
+                console.error("Failed to fetch images:", error);
+            }
+        }
+
+        function renderImages() {
+            const nextBatch = imageData.slice(currentIndex, currentIndex + batchSize);
+            nextBatch.forEach(src => {
+                const img = document.createElement('img');
+                img.src = src;
+                img.alt = "Gallery Image";
+                img.className = "w-full h-60 object-cover rounded shadow-md";
+                gallery.appendChild(img);
+            });
+
+            currentIndex += batchSize;
+
+            if (currentIndex >= imageData.length) {
+                loadMoreBtn.disabled = true;
+                loadMoreBtn.textContent = "No More Images";
+                loadMoreBtn.classList.add("bg-gray-400", "cursor-not-allowed");
+            }
+        }
+
+        loadMoreBtn.addEventListener('click', renderImages);
+
+        // Initial fetch
+        fetchImages();
+    </script>
+</body>
+
+</html> -->

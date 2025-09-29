@@ -1,110 +1,323 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Secondary School Homepage</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Allahu Akbar International School</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom font for a touch of elegance */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Amiri:wght@400;700&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #F9FAFB;
+            color: #1F2937;
+        }
+        .font-arabic {
+            font-family: 'Amiri', serif;
+        }
+        .hero-bg {
+            background-image: url('abd.JPG');
+            background-size: cover;
+            background-position: center;
+        }
+        .logo {
+      height: 40px; /* Adjust size of your logo */
+      width: auto;
+    }
+    </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body>
 
-  <!-- Navbar -->
-  <nav class="bg-white shadow-md">
-    <div class="container mx-auto flex justify-between items-center px-6 py-4">
-      <a href="#" class="text-2xl font-bold text-blue-700">Our School</a>
-      <button id="menu-btn" class="md:hidden text-gray-700">
-        ☰
-      </button>
-      <ul id="menu" class="hidden md:flex space-x-8 font-medium">
-        <li><a href="#" class="hover:text-blue-600">Home</a></li>
-        <li><a href="#" class="hover:text-blue-600">About Us</a></li>
-        <li><a href="#" class="hover:text-blue-600">Admissions</a></li>
-        <li><a href="#" class="hover:text-blue-600">Academics</a></li>
-        <li><a href="#" class="hover:text-blue-600">Student Life</a></li>
-        <li><a href="#" class="hover:text-blue-600">Parents</a></li>
-        <li><a href="#" class="hover:text-blue-600">Contact</a></li>
-      </ul>
+ <!-- Navigation Bar -->
+<nav class="bg-white shadow-lg sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center py-4">
+    <div class="flex items-center space-x-2">
+      <img src="Untitled design.png" alt="School Logo" class="logo" />
     </div>
 
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
-      <a href="#" class="block py-2">Home</a>
-      <a href="#" class="block py-2">About Us</a>
-      <a href="#" class="block py-2">Admissions</a>
-      <a href="#" class="block py-2">Academics</a>
-      <a href="#" class="block py-2">Student Life</a>
-      <a href="#" class="block py-2">Parents</a>
-      <a href="#" class="block py-2">Contact</a>
+    <!-- Desktop Menu -->
+    <div class="hidden md:flex space-x-6 text-sm lg:text-base">
+      <a href="about.htm" class="text-gray-600 hover:text-emerald-700">About Us</a>
+      <a href="#academics" class="text-gray-600 hover:text-emerald-700">Academics</a>
+      <a href="#features" class="text-gray-600 hover:text-emerald-700">Features</a>
+      <a href="#contact" class="text-gray-600 hover:text-emerald-700">Contact</a>
+      <a href="signup.htm" class="text-gray-600 hover:text-emerald-700">Student Portal</a>
+      <a href="gallery.htm" class="text-gray-600 hover:text-emerald-700">Gallery</a>
     </div>
-  </nav>
 
-  <!-- Hero Section -->
-  <section class="bg-blue-600 text-white py-20 text-center">
-    <h1 class="text-4xl md:text-6xl font-bold">Welcome to Our Secondary School</h1>
-    <p class="mt-4 text-lg md:text-xl">Empowering students through excellence in academics, character, and community.</p>
-    <a href="#admissions" class="mt-6 inline-block bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100">Apply Now</a>
-  </section>
+    <a href="appli.htm" class="hidden md:inline-block bg-emerald-700 text-white px-5 py-2 rounded-full hover:bg-emerald-800 shadow-md transition">Enroll Now</a>
 
-  <!-- About Section -->
-  <section class="container mx-auto px-6 py-16">
-    <h2 class="text-3xl font-bold text-center text-blue-700 mb-8">About Us</h2>
-    <p class="text-center max-w-3xl mx-auto text-lg">
-      Our school provides a holistic education experience focusing on academic achievement, personal growth, and community service. With highly qualified teachers and modern facilities, we prepare students for a bright future.
-    </p>
-  </section>
+    <!-- Mobile Button -->
+    <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-emerald-700 focus:outline-none">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        <path id="close-icon" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
 
-  <!-- Academics -->
-  <section id="academics" class="bg-gray-100 py-16">
-    <div class="container mx-auto px-6">
-      <h2 class="text-3xl font-bold text-center text-blue-700 mb-8">Academics</h2>
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="bg-white shadow-lg rounded-lg p-6">
-          <h3 class="font-bold text-xl mb-4">Science</h3>
-          <p>Comprehensive curriculum in Physics, Chemistry, Biology, and Mathematics.</p>
-        </div>
-        <div class="bg-white shadow-lg rounded-lg p-6">
-          <h3 class="font-bold text-xl mb-4">Arts</h3>
-          <p>Developing creativity through Literature, History, and Languages.</p>
-        </div>
-        <div class="bg-white shadow-lg rounded-lg p-6">
-          <h3 class="font-bold text-xl mb-4">Technology</h3>
-          <p>Hands-on learning in ICT, Robotics, and Technical Drawing.</p>
-        </div>
-      </div>
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="mobile-menu md:hidden bg-white shadow-lg">
+    <div class="px-6 py-4 space-y-2 text-sm">
+      <a href="index.htm" class="mobile-menu-link block text-gray-600 hover:text-emerald-700">Home</a>
+      <a href="about.htm" class="mobile-menu-link block text-gray-600 hover:text-emerald-700">About Us</a>
+      <a href="#academics" class="mobile-menu-link block text-gray-600 hover:text-emerald-700">Academics</a>
+      <a href="#features" class="mobile-menu-link block text-gray-600 hover:text-emerald-700">Features</a>
+      <a href="#contact" class="mobile-menu-link block text-gray-600 hover:text-emerald-700">Contact</a>
+      <a href="signup.htm" class="mobile-menu-link block text-gray-600 hover:text-emerald-700">Student Portal</a>
+      <a href="gallery.htm" class="mobile-menu-link block text-gray-600 hover:text-emerald-700">Gallery</a>
+      <a href="appli.htm" class="mobile-menu-link block bg-emerald-700 text-white px-5 py-2 rounded-full text-center mt-4 hover:bg-emerald-800">Enroll Now</a>
     </div>
-  </section>
+  </div>
+</nav>
 
-  <!-- Student Life -->
-  <section id="student-life" class="container mx-auto px-6 py-16">
-    <h2 class="text-3xl font-bold text-center text-blue-700 mb-8">Student Life</h2>
-    <div class="grid md:grid-cols-2 gap-8">
-      <div class="bg-white shadow-lg rounded-lg p-6">
-        <h3 class="font-bold text-xl mb-4">Clubs & Societies</h3>
-        <p>Wide variety of clubs including Debate, Drama, Coding, and Music.</p>
-      </div>
-      <div class="bg-white shadow-lg rounded-lg p-6">
-        <h3 class="font-bold text-xl mb-4">Sports</h3>
-        <p>Active participation in football, basketball, athletics, and swimming.</p>
-      </div>
-    </div>
-  </section>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuIcon = document.getElementById('menu-icon');
+  const closeIcon = document.getElementById('close-icon');
+  const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
 
-  <!-- Footer -->
-  <footer class="bg-blue-700 text-white py-8 mt-12">
-    <div class="container mx-auto text-center">
-      <p class="text-lg font-semibold">Our Secondary School</p>
-      <p class="mt-2">© 2025 All Rights Reserved</p>
-    </div>
-  </footer>
+  // Toggle mobile menu
+  function toggleMobileMenu() {
+    const isOpen = !mobileMenu.classList.contains('mobile-menu-closed');
+    
+    if (isOpen) {
+      closeMobileMenu();
+    } else {
+      openMobileMenu();
+    }
+  }
 
-  <!-- Mobile Menu Toggle Script -->
-  <script>
-    const menuBtn = document.getElementById('menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    menuBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
+  // Open mobile menu
+  function openMobileMenu() {
+    mobileMenu.classList.remove('mobile-menu-closed');
+    mobileMenu.classList.add('mobile-menu-open');
+    menuIcon.classList.add('hidden');
+    closeIcon.classList.remove('hidden');
+  }
+
+  // Close mobile menu
+  function closeMobileMenu() {
+    mobileMenu.classList.remove('mobile-menu-open');
+    mobileMenu.classList.add('mobile-menu-closed');
+    menuIcon.classList.remove('hidden');
+    closeIcon.classList.add('hidden');
+  }
+
+  // Mobile menu button click
+  mobileMenuButton.addEventListener('click', toggleMobileMenu);
+
+  // Close mobile menu when clicking on links (for md screens and below)
+  mobileMenuLinks.forEach(link => {
+    link.addEventListener('click', function() {
+      // Check if we're on md screen or below
+      if (window.innerWidth < 768) {
+        closeMobileMenu();
+      }
     });
-  </script>
+  });
+
+  // Close mobile menu when clicking outside
+  document.addEventListener('click', function(event) {
+    const isClickInsideNav = event.target.closest('nav');
+    const isMenuOpen = mobileMenu.classList.contains('mobile-menu-open');
+    
+    if (!isClickInsideNav && isMenuOpen && window.innerWidth < 768) {
+      closeMobileMenu();
+    }
+  });
+
+  // Close mobile menu on window resize if screen becomes larger
+  window.addEventListener('resize', function() {
+    if (window.innerWidth >= 768) {
+      closeMobileMenu();
+    }
+  });
+
+  // Initialize menu as closed
+  closeMobileMenu();
+});
+</script>
+
+<style>
+.mobile-menu {
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
+}
+
+.mobile-menu-closed {
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.mobile-menu-open {
+  max-height: 400px;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Ensure smooth transitions */
+.mobile-menu-link {
+  transition: color 0.2s ease-in-out;
+}
+</style>
+<!-- Hero Section -->
+<header class="hero-bg relative flex items-center justify-center h-screen text-center text-white before:absolute before:inset-0 before:bg-black before:bg-opacity-50">
+    <div class="relative z-10 p-8 max-w-4xl">
+        <h1 class="text-5xl md:text-6xl font-extrabold leading-tight mb-4 tracking-tight">
+            Nurturing Tomorrow's Leaders with Faith and Knowledge
+        </h1>
+        <p class="text-xl md:text-2xl font-light mb-8 max-w-3xl mx-auto">
+            A modern Islamic secondary school providing a balanced curriculum for academic excellence and spiritual growth.
+        </p>
+        <a href="#explore" class="bg-emerald-700 text-white text-lg font-bold px-8 py-4 rounded-full hover:bg-emerald-800 transition duration-300 transform hover:scale-105 shadow-xl">
+            Explore Our Vision
+        </a>
+    </div>
+</header>
+
+<!-- About Us Section -->
+<section id="about" class="py-20 bg-white">
+    <div class="container mx-auto px-6 max-w-6xl">
+        <h2 class="text-4xl font-bold text-center text-emerald-900 mb-4">Our Mission</h2>
+        <p class="text-center text-gray-600 max-w-3xl mx-auto mb-12">
+            To provide a holistic education that integrates a robust national curriculum with a deep understanding of Islamic principles and values.
+        </p>
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="p-8 bg-gray-50 rounded-xl shadow-sm text-center transform transition duration-300 hover:scale-105 hover:shadow-lg">
+                <div class="flex justify-center mb-4 text-emerald-700">
+                    <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 20 20"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path></svg>
+                </div>
+                <h3 class="text-xl font-semibold text-emerald-900 mb-2">Islamic Foundation</h3>
+                <p class="text-gray-500">
+                    Deeply rooted in the teachings of the Qur'an and Sunnah, our students are nurtured in a virtuous environment.
+                </p>
+            </div>
+            <div class="p-8 bg-gray-50 rounded-xl shadow-sm text-center transform transition duration-300 hover:scale-105 hover:shadow-lg">
+                <div class="flex justify-center mb-4 text-emerald-700">
+                    <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"></path></svg>
+                </div>
+                <h3 class="text-xl font-semibold text-emerald-900 mb-2">Academic Excellence</h3>
+                <p class="text-gray-500">
+                    We deliver a comprehensive and modern curriculum, preparing students for success in higher education.
+                </p>
+            </div>
+            <div class="p-8 bg-gray-50 rounded-xl shadow-sm text-center transform transition duration-300 hover:scale-105 hover:shadow-lg">
+                <div class="flex justify-center mb-4 text-emerald-700">
+                    <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 20 20"><path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path><path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"></path></svg>
+                </div>
+                <h3 class="text-xl font-semibold text-emerald-900 mb-2">Innovative Learning</h3>
+                <p class="text-gray-500">
+                    Our dynamic programs and extra-curricular activities develop well-rounded, critical thinkers.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Advanced Website Features Section -->
+<section id="features" class="py-20 bg-gray-100">
+    <div class="container mx-auto px-6 max-w-6xl">
+        <h2 class="text-4xl font-bold text-center text-emerald-900 mb-4">Advanced Learning Features</h2>
+        <p class="text-center text-gray-600 max-w-3xl mx-auto mb-12">
+            Our platform provides a seamless digital experience for students, parents, and faculty.
+        </p>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="bg-white p-6 rounded-lg shadow-sm flex flex-col items-center text-center transform transition duration-300 hover:shadow-lg">
+                <div class="p-4 rounded-full bg-emerald-100 mb-4">
+                    <svg class="w-10 h-10 text-emerald-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                </div>
+                <h3 class="text-xl font-semibold text-emerald-900">Virtual Learning Environment</h3>
+                <p class="text-gray-500 mt-2">
+                    Access lessons, quizzes, and resources online, anytime, anywhere.
+                </p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-sm flex flex-col items-center text-center transform transition duration-300 hover:shadow-lg">
+                <div class="p-4 rounded-full bg-emerald-100 mb-4">
+                    <svg class="w-10 h-10 text-emerald-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+                </div>
+                <h3 class="text-xl font-semibold text-emerald-900">Integrated Communication</h3>
+                <p class="text-gray-500 mt-2">
+                    Effortless communication between teachers, students, and parents.
+                </p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-sm flex flex-col items-center text-center transform transition duration-300 hover:shadow-lg">
+                <div class="p-4 rounded-full bg-emerald-100 mb-4">
+                    <svg class="w-10 h-10 text-emerald-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"></path></svg>
+                </div>
+                <h3 class="text-xl font-semibold text-emerald-900">E-Library and Resources</h3>
+                <p class="text-gray-500 mt-2">
+                    Vast collection of digital books, research materials, and Islamic studies texts.
+                </p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-sm flex flex-col items-center text-center transform transition duration-300 hover:shadow-lg">
+                <div class="p-4 rounded-full bg-emerald-100 mb-4">
+                    <svg class="w-10 h-10 text-emerald-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                </div>
+                <h3 class="text-xl font-semibold text-emerald-900">Student Portals</h3>
+                <p class="text-gray-500 mt-2">
+                    Personalized portals for grades, attendance, and online exams.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action / Admission -->
+<section id="enroll" class="py-20 bg-emerald-800 text-white">
+    <div class="container mx-auto px-6 max-w-4xl text-center">
+        <h2 class="text-4xl font-bold mb-4">Shape Your Child's Future</h2>
+        <p class="text-lg mb-8">
+            Enroll your child in our institution and provide them with a world-class education rooted in Islamic values. Admissions are now open!
+        </p>
+        <a href="appli.htm" class="bg-amber-400 text-emerald-900 font-bold px-8 py-4 rounded-full hover:bg-amber-500 transition duration-300 shadow-xl">
+            Start Your Application
+        </a>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer id="contact" class="bg-white text-gray-600 py-12">
+    <div class="container mx-auto px-6 max-w-6xl">
+        <div class="md:flex md:justify-between grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="mb-6 md:mb-0">
+                <div class="flex items-center space-x-2 mb-4">
+                    <svg class="w-8 h-8 text-emerald-700" fill="currentColor" viewBox="0 0 20 20"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path></svg>
+                    <span class="text-2xl font-semibold text-emerald-900 font-arabic">Allahu Akbar <br>International School</span>
+                </div>
+                <p class="text-gray-500">Motto:"AL QURAN HUDAN LI NASS" Q2VS185.</p>
+            </div>
+            <div>
+                <h4 class="text-lg font-semibold text-emerald-900 mb-4">Quick Links</h4>
+                <ul class="space-y-2">
+                    <li><a href="index.htm" class="hover:text-emerald-700 transition duration-300">Home</a></li>
+                    <li><a href="about.htm" class="hover:text-emerald-700 transition duration-300">About Us</a></li>
+                    <li><a href="#academics" class="hover:text-emerald-700 transition duration-300">Academics</a></li>
+                    <li><a href="#features" class="hover:text-emerald-700 transition duration-300">Our Features</a></li>
+                    <li><a href="signup.htm" class="hover:text-emerald-700 transition duration-300">Student portal</a></li>
+                    <li><a href="gallery.htm" class="hover:text-emerald-700 transition duration-300">Gallery</a></li>
+                    <li><a href="#" class="hover:text-emerald-700 transition duration-300">FAQs</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-semibold text-emerald-900 mb-4">Contact</h4>
+                <address class="space-y-2 not-italic">
+                    <p>21, Ajegunle Street, Sagamu, Ogun State, Nigeria. </p>
+                    <p>0803 351 9155, 0813 938 1306</p>
+                    <p>allahuakbarschools@gmail.com</p>
+                </address>
+            </div>
+        </div>
+        <div class="mt-8 pt-8 border-t border-gray-200 text-center">
+            <p>&copy; 2025 Allahu Akbar International School. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
 
 </body>
 </html>

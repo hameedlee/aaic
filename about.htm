@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School News: Article Title</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;700&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Define custom font families for better typography */
+        body { font-family: 'Karla', sans-serif; }
+        .font-serif { font-family: 'Crimson Pro', serif; }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-slate-800">
+
+    <!-- Navigation Bar -->
+<nav class="bg-white shadow-lg sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center py-4">
+    <div class="flex items-center space-x-2">
+      <img src="Untitled design.png" alt="School Logo" class="logo" />
+    </div>
+
+    <!-- Desktop Menu -->
+    <div class="hidden md:flex space-x-6 text-sm lg:text-base">
+      <a href="about.htm" class="text-gray-600 hover:text-emerald-700">About Us</a>
+      <a href="#academics" class="text-gray-600 hover:text-emerald-700">Academics</a>
+      <a href="#features" class="text-gray-600 hover:text-emerald-700">Features</a>
+      <a href="#contact" class="text-gray-600 hover:text-emerald-700">Contact</a>
+      <a href="signup.htm" class="text-gray-600 hover:text-emerald-700">Student Portal</a>
+      <a href="gallery.htm" class="text-gray-600 hover:text-emerald-700">Gallery</a>
+    </div>
+
+    <a href="appli.htm" class="hidden md:inline-block bg-emerald-700 text-white px-5 py-2 rounded-full hover:bg-emerald-800 shadow-md transition">Enroll Now</a>
+
+    <!-- Mobile Button -->
+    <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-emerald-700 focus:outline-none">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        <path id="close-icon" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="mobile-menu md:hidden bg-white shadow-lg">
+    <div class="px-6 py-4 space-y-2 text-sm">
+      <a href="index.htm" class="mobile-menu-link block text-gray-600 hover:text-emerald-700">Home</a>
+      <a href="about.htm" class="mobile-menu-link block text-gray-600 hover:text-emerald-700">About Us</a>
+      <a href="#academics" class="mobile-menu-link block text-gray-600 hover:text-emerald-700">Academics</a>
+      <a href="#features" class="mobile-menu-link block text-gray-600 hover:text-emerald-700">Features</a>
+      <a href="#contact" class="mobile-menu-link block text-gray-600 hover:text-emerald-700">Contact</a>
+      <a href="signup.htm" class="mobile-menu-link block text-gray-600 hover:text-emerald-700">Student Portal</a>
+      <a href="gallery.htm" class="mobile-menu-link block text-gray-600 hover:text-emerald-700">Gallery</a>
+      <a href="appli.htm" class="mobile-menu-link block bg-emerald-700 text-white px-5 py-2 rounded-full text-center mt-4 hover:bg-emerald-800">Enroll Now</a>
+    </div>
+  </div>
+</nav>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuIcon = document.getElementById('menu-icon');
+  const closeIcon = document.getElementById('close-icon');
+  const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
+
+  // Toggle mobile menu
+  function toggleMobileMenu() {
+    const isOpen = !mobileMenu.classList.contains('mobile-menu-closed');
+    
+    if (isOpen) {
+      closeMobileMenu();
+    } else {
+      openMobileMenu();
+    }
+  }
+
+  // Open mobile menu
+  function openMobileMenu() {
+    mobileMenu.classList.remove('mobile-menu-closed');
+    mobileMenu.classList.add('mobile-menu-open');
+    menuIcon.classList.add('hidden');
+    closeIcon.classList.remove('hidden');
+  }
+
+  // Close mobile menu
+  function closeMobileMenu() {
+    mobileMenu.classList.remove('mobile-menu-open');
+    mobileMenu.classList.add('mobile-menu-closed');
+    menuIcon.classList.remove('hidden');
+    closeIcon.classList.add('hidden');
+  }
+
+  // Mobile menu button click
+  mobileMenuButton.addEventListener('click', toggleMobileMenu);
+
+  // Close mobile menu when clicking on links (for md screens and below)
+  mobileMenuLinks.forEach(link => {
+    link.addEventListener('click', function() {
+      // Check if we're on md screen or below
+      if (window.innerWidth < 768) {
+        closeMobileMenu();
+      }
+    });
+  });
+
+  // Close mobile menu when clicking outside
+  document.addEventListener('click', function(event) {
+    const isClickInsideNav = event.target.closest('nav');
+    const isMenuOpen = mobileMenu.classList.contains('mobile-menu-open');
+    
+    if (!isClickInsideNav && isMenuOpen && window.innerWidth < 768) {
+      closeMobileMenu();
+    }
+  });
+
+  // Close mobile menu on window resize if screen becomes larger
+  window.addEventListener('resize', function() {
+    if (window.innerWidth >= 768) {
+      closeMobileMenu();
+    }
+  });
+
+  // Initialize menu as closed
+  closeMobileMenu();
+});
+</script>
+
+<style>
+    .logo {
+      height: 40px; /* Adjust size of your logo */
+      width: auto;
+    }
+.mobile-menu {
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
+}
+
+.mobile-menu-closed {
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.mobile-menu-open {
+  max-height: 400px;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Ensure smooth transitions */
+.mobile-menu-link {
+  transition: color 0.2s ease-in-out;
+}
+</style>
+    <main class="container mx-auto px-6 py-12">
+        <!-- Main Content Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <!-- Article Content Area -->
+            <div class="md:col-span-2">
+                <article class="bg-white p-8 rounded-lg shadow-sm">
+                    <header class="mb-8">
+                        <span class="text-xs text-green-400 font-bold uppercase tracking-wider">News & Events</span>
+                        <h1 class="mt-2 text-4xl font-serif font-bold text-green-900 leading-tight">
+                            Celebrating Academic Excellence: The 2025 Science Fair
+                        </h1>
+                        <p class="mt-4 text-slate-500 text-sm">
+                            By <span class="font-medium text-green-400">School Administration</span> on September 29, 2025
+                        </p>
+                    </header>
+                    <figure class="mb-8 rounded-lg overflow-hidden shadow-md">
+                        <img src="https://images.unsplash.com/photo-1549247738-4b71221b79f2?q=80&w=2940&auto=format&fit=crop" alt="Students presenting at a science fair" class="w-full h-auto object-cover">
+                        <figcaption class="mt-2 text-xs text-slate-400 text-center">
+                            Students proudly displaying their award-winning science project.
+                        </figcaption>
+                    </figure>
+                    <div class="prose max-w-none text-lg leading-relaxed text-slate-700">
+                        <p>
+                            Al-Falah Secondary School recently hosted its annual Science Fair, a showcase of innovation and scientific inquiry. Students from all grade levels presented a diverse range of projects, from renewable energy models to groundbreaking research in environmental science. The event highlighted the school's commitment to fostering a passion for discovery and critical thinking.
+                        </p>
+                        <h2 class="mt-10 mb-4 font-serif font-bold text-2xl text-green-900">
+                            Innovation and Ingenuity on Display
+                        </h2>
+                        <p>
+                            The projects were judged by a panel of distinguished scientists and alumni, who were deeply impressed by the quality and creativity of the students' work. Several projects received special recognition for their originality and potential impact.
+                        </p>
+                        <blockquote class="my-8 p-6 italic bg-gray-50 border-l-4 border-green-400 text-slate-600">
+                            "The level of thought and dedication our students put into their projects is truly inspiring. It's a testament to their hard work and the support of our dedicated faculty."
+                            <footer class="mt-2 text-sm not-italic font-medium text-slate-500">— Mr. Abdul Qadir, Head of Academics</footer>
+                        </blockquote>
+                        <h2 class="mt-10 mb-4 font-serif font-bold text-2xl text-green-900">
+                            A Community Event
+                        </h2>
+                        <p>
+                            The Science Fair was not only a competition but also a community-wide celebration. Parents, staff, and students from other schools attended, creating a vibrant and engaging atmosphere. The day concluded with an awards ceremony, where students were recognized for their achievements.
+                        </p>
+                        <p>
+                            We look forward to next year's event and the continued success of our students in their academic and scientific pursuits.
+                        </p>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Sidebar Section -->
+            <aside class="space-y-8 hidden md:hidden lg:block">
+                <!-- Recent Articles Widget -->
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <h3 class="font-bold text-lg text-green-900 border-b pb-3 mb-4">Recent News</h3>
+                    <ul class="space-y-4">
+                        <li class="border-b last:border-b-0 pb-3 last:pb-0">
+                            <a href="#" class="block hover:text-sky-700 transition-colors">
+                                <span class="font-medium">Student Volunteer Program Kicks Off</span>
+                                <span class="block text-xs text-slate-500 mt-1">September 25, 2025</span>
+                            </a>
+                        </li>
+                        <li class="border-b last:border-b-0 pb-3 last:pb-0">
+                            <a href="#" class="block hover:text-sky-700 transition-colors">
+                                <span class="font-medium">Annual Sports Day Brings Community Together</span>
+                                <span class="block text-xs text-slate-500 mt-1">September 20, 2025</span>
+                            </a>
+                        </li>
+                        <li class="border-b last:border-b-0 pb-3 last:pb-0">
+                            <a href="#" class="block hover:text-sky-700 transition-colors">
+                                <span class="font-medium">Alumni Spotlight: Success Story of a Former Student</span>
+                                <span class="block text-xs text-slate-500 mt-1">September 15, 2025</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Upcoming Events Widget -->
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <h3 class="font-bold text-lg text-green-900 border-b pb-3 mb-4">Upcoming Events</h3>
+                    <ul class="space-y-4">
+                        <li>
+                            <div class="flex items-start space-x-4">
+                                <div class="flex-shrink-0 text-center">
+                                    <span class="block text-xs font-semibold text-white bg-green-400 rounded-t-md px-2 py-1">Oct</span>
+                                    <span class="block text-lg font-bold text-green-400 bg-gray-100 rounded-b-md px-2">10</span>
+                                </div>
+                                <div>
+                                    <p class="font-medium">Parent-Teacher Conference</p>
+                                    <p class="text-sm text-slate-500">8:00 AM - 4:00 PM</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="flex items-start space-x-4">
+                                <div class="flex-shrink-0 text-center">
+                                    <span class="block text-xs font-semibold text-white bg-green-400 rounded-t-md px-2 py-1">Oct</span>
+                                    <span class="block text-lg font-bold text-green-400 bg-gray-100 rounded-b-md px-2">18</span>
+                                </div>
+                                <div>
+                                    <p class="font-medium">Inter-House Debate Competition</p>
+                                    <p class="text-sm text-slate-500">2:00 PM</p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Call-to-Action Widget -->
+                <div class="bg-green-400 p-6 rounded-lg shadow-sm text-white text-center">
+                    <h3 class="font-bold text-lg mb-2">Join Our Community</h3>
+                    <p class="text-sm">Interested in what Al-Falah offers? Schedule a visit today.</p>
+                    <a href="#" class="mt-4 inline-block bg-white text-sky-700 px-6 py-3 rounded-full shadow-lg hover:bg-gray-100 transition-colors font-medium">Schedule a Tour</a>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+<!-- Footer -->
+<footer id="contact" class="bg-white text-gray-600 py-12">
+    <div class="container mx-auto px-6 max-w-6xl">
+        <div class="md:flex md:justify-between grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="mb-6 md:mb-0">
+                <div class="flex items-center space-x-2 mb-4">
+                    <svg class="w-8 h-8 text-emerald-700" fill="currentColor" viewBox="0 0 20 20"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path></svg>
+                    <span class="text-2xl font-semibold text-emerald-900 font-arabic">Allahu Akbar <br>International School</span>
+                </div>
+                <p class="text-gray-500">Motto:"AL QURAN HUDAN LI NASS" Q2VS185.</p>
+            </div>
+            <div>
+                <h4 class="text-lg font-semibold text-emerald-900 mb-4">Quick Links</h4>
+                <ul class="space-y-2">
+                    <li><a href="index.htm" class="hover:text-emerald-700 transition duration-300">Home</a></li>
+                    <li><a href="about.htm" class="hover:text-emerald-700 transition duration-300">About Us</a></li>
+                    <li><a href="#academics" class="hover:text-emerald-700 transition duration-300">Academics</a></li>
+                    <li><a href="#features" class="hover:text-emerald-700 transition duration-300">Our Features</a></li>
+                    <li><a href="signup.htm" class="hover:text-emerald-700 transition duration-300">Student portal</a></li>
+                    <li><a href="gallery.htm" class="hover:text-emerald-700 transition duration-300">Gallery</a></li>
+                    <li><a href="#" class="hover:text-emerald-700 transition duration-300">FAQs</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-semibold text-emerald-900 mb-4">Contact</h4>
+                <address class="space-y-2 not-italic">
+                    <p>21, Ajegunle Street, Sagamu, Ogun State, Nigeria. </p>
+                    <p>0803 351 9155, 0813 938 1306</p>
+                    <p>allahuakbarschools@gmail.com</p>
+                </address>
+            </div>
+        </div>
+        <div class="mt-8 pt-8 border-t border-gray-200 text-center">
+            <p>&copy; 2025 Allahu Akbar International School. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
