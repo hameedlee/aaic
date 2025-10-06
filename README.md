@@ -6,8 +6,10 @@ A simple web application that fetches and displays blog posts from the Blogger A
 
 - **Responsive Design**: Clean, modern interface that works on all devices
 - **Dynamic Content Loading**: Fetches blog posts from Blogger API on demand
+- **Inline Blog Reading**: Full blog posts display on the same page (no external navigation)
 - **Image Extraction**: Automatically extracts and displays the first image from each blog post
-- **Content Preview**: Shows a truncated preview of each post with "Read More" links
+- **Content Preview**: Shows a truncated preview of each post with "Read More" buttons
+- **Navigation**: Easy back-and-forth navigation between post list and full post view
 - **Error Handling**: Graceful error handling with user-friendly messages
 - **Loading States**: Visual feedback during API requests
 
@@ -25,10 +27,12 @@ The application is configured to use:
 
 ## How to Use
 
-1. Open `index.html` in a web browser
+1. Open `index.html` in a web browser (or serve via HTTP server)
 2. Click the "Fetch Blog Posts" button
-3. View the dynamically loaded blog posts
-4. Click "Read More →" on any post to view the full article
+3. View the dynamically loaded blog posts in a responsive grid
+4. Click "Read More →" on any post to view the full article inline
+5. Use the "← Back to Posts" button to return to the post list
+6. Navigate seamlessly between posts without leaving the page
 
 ## API Integration
 
@@ -59,6 +63,21 @@ The application handles various error scenarios:
 - Invalid responses
 - Empty blog data
 
+## New Features Added
+
+### Inline Blog Post Viewing
+- **Same-Page Reading**: Full blog posts now display on the same webpage instead of opening external links
+- **Seamless Navigation**: Easy switching between post list and individual post views
+- **Back Button**: Convenient "← Back to Posts" button for returning to the main list
+- **Enhanced Styling**: Professional typography and formatting for full post content
+- **Smooth Transitions**: Animated transitions between views for better user experience
+
+### Technical Improvements
+- **Button-Based Navigation**: "Read More" links converted to interactive buttons
+- **State Management**: Proper handling of view states (list vs. detail)
+- **Enhanced CSS**: Additional styling for prose content, images, and typography
+- **Responsive Design**: Full posts maintain responsive design on all devices
+
 ## Future Enhancements
 
 Potential improvements could include:
@@ -67,3 +86,5 @@ Potential improvements could include:
 - Category-based filtering
 - Social sharing buttons
 - Comments integration
+- Bookmarking favorite posts
+- Print-friendly formatting
