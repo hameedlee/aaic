@@ -1,150 +1,31 @@
-<!-- Dynamic Blogger Post Loader with Tabs -->
-<style>
-  body, .post-body {
-    font-family: 'Segoe UI', sans-serif;
-    background: #f8f9fa;
-    padding: 20px;
-    color: #333;
-  }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Blog</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans">
 
-  .tabs-container {
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    overflow: hidden;
-  }
+    <header class="bg-blue-600 text-white p-4 shadow-lg">
+        <nav class="container mx-auto flex justify-between items-center">
+            <div class="text-2xl font-bold">My School Blog</div>
+            <ul class="flex space-x-4">
+                <li><a href="#" class="hover:text-blue-200">Home</a></li>
+                <li><a href="#" id="blog-link" class="hover:text-blue-200">Blog</a></li>
+                <li><a href="#" class="hover:text-blue-200">About Us</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  .tab-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    background: #343a40;
-  }
+    <main class="container mx-auto p-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="posts-container">
+            <!-- Blog posts will be dynamically loaded here -->
+        </div>
+    </main>
 
-  .tab-buttons button {
-    flex: 1;
-    padding: 12px 15px;
-    background: #343a40;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    transition: background 0.3s;
-    font-weight: bold;
-  }
-
-  .tab-buttons button.active {
-    background: #007BFF;
-  }
-
-  .tab-content {
-    padding: 20px;
-    display: none;
-    animation: fadeIn 0.3s ease-in-out;
-  }
-
-  .tab-content.active {
-    display: block;
-  }
-
-  .post-card {
-    border-bottom: 1px solid #ddd;
-    padding: 10px 0;
-  }
-
-  .post-card h4 {
-    margin: 0;
-    font-size: 18px;
-  }
-
-  .post-card a {
-    text-decoration: none;
-    color: #007BFF;
-  }
-
-  .post-card p {
-    font-size: 14px;
-    color: #666;
-  }
-
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  @media (max-width: 600px) {
-    .tab-buttons button {
-      flex: 100%;
-    }
-  }
-</style>
-
-<div class="tabs-container">
-  <div class="tab-buttons">
-    <button class="tab-btn active" onclick="loadPosts('all', this)">All</button>
-    <button class="tab-btn" onclick="loadPosts('Technology', this)">Technology</button>
-    <button class="tab-btn" onclick="loadPosts('Lifestyle', this)">Lifestyle</button>
-    <button class="tab-btn" onclick="loadPosts('Tips', this)">Tips</button>
-  </div>
-  <div id="tab-content" class="tab-content active">
-    <p>Loading posts...</p>
-  </div>
-</div>
-
-<script>
-  const blogID = 'YOURBLOGID'; // Replace this with your Blogger blog ID
-  const maxPosts = 5;
-
-  function loadPosts(label, button) {
-    // Handle active tab UI
-    const buttons = document.querySelectorAll('.tab-btn');
-    buttons.forEach(btn => btn.classList.remove('active'));
-    button.classList.add('active');
-
-    const content = document.getElementById('tab-content');
-    content.innerHTML = '<p>Loading posts...</p>';
-    content.classList.add('active');
-
-    let url = '';
-    if (label === 'all') {
-      url = `https://www.blogger.com/feeds/${blogID}/posts/default?alt=json&max-results=${maxPosts}`;
-    } else {
-      url = `https://www.blogger.com/feeds/${blogID}/posts/default/-/${label}?alt=json&max-results=${maxPosts}`;
-    }
-
-    fetch(url)
-      .then(res => res.json())
-      .then(data => {
-        const entries = data.feed.entry || [];
-        if (!entries.length) {
-          content.innerHTML = '<p>No posts found for this category.</p>';
-          return;
-        }
-
-        let html = '';
-        entries.forEach(entry => {
-          const title = entry.title.$t;
-          const link = entry.link.find(l => l.rel === 'alternate').href;
-          const summary = entry.summary ? entry.summary.$t : '';
-          html += `
-            <div class="post-card">
-              <h4><a href="${link}" target="_blank">${title}</a></h4>
-              <p>${summary.substring(0, 100)}...</p>
-            </div>
-          `;
-        });
-
-        content.innerHTML = html;
-      })
-      .catch(err => {
-        content.innerHTML = '<p>Error loading posts.</p>';
-        console.error('Error:', err);
-      });
-  }
-
-  // Load "All" posts on first load
-  document.addEventListener('DOMContentLoaded', () => {
-    const firstTab = document.querySelector('.tab-btn.active');
-    if (firstTab) {
-      loadPosts('all', firstTab);
-    }
-  });
-</script>
+    <script src="script.js"></script>
+</body>
+</html>
