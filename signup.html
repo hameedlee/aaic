@@ -1,13 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login page</title>
+  <title>Sign up for Allahu Akbar International School</title>
   <script src="https://cdn.tailwindcss.com"></script>
-</head>  
+  <!-- Best practice: Embed custom styles to avoid multiple requests if needed, or put them in a separate CSS file. -->
+  <style>
+    .logo {
+      height: 40px; /* Adjust size of your logo */
+      width: auto;
+    }
+  </style>
+</head>
 
-  <body class="bg-gray-100 flex flex-col min-h-screen dark:bg-gray-900">
+<body class="bg-gray-100 flex flex-col min-h-screen dark:bg-gray-900">
 
   <!-- ========================
        NAVIGATION BAR
@@ -21,16 +29,17 @@
 
     <!-- Desktop Menu -->
     <div class="hidden md:flex space-x-6 text-sm lg:text-base">
-      <a href="index.htm" class="text-gray-600 hover:text-emerald-700">Home</a>
-      <a href="about.htm" class="text-gray-600 hover:text-emerald-700">About Us</a>
+      <a href="index.html" class="text-gray-600 hover:text-emerald-700">Home</a>
+      <a href="about.html" class="text-gray-600 hover:text-emerald-700">About Us</a>
       <a href="#academics" class="text-gray-600 hover:text-emerald-700">Academics</a>
       <a href="#features" class="text-gray-600 hover:text-emerald-700">Features</a>
       <a href="#contact" class="text-gray-600 hover:text-emerald-700">Contact</a>
-      <a href="signup.htm" class="text-gray-600 hover:text-emerald-700">Student Portal</a>
-      <a href="gallery.htm" class="text-gray-600 hover:text-emerald-700">Gallery</a>
+      <a href="signup.html" class="text-gray-600 hover:text-emerald-700">Student Portal</a>
+      <a href="gallery.html" class="text-gray-600 hover:text-emerald-700">Gallery</a>
+      <a href="blog.html" class="text-gray-600 hover:text-emerald-700">Blog</a>
     </div>
 
-    <a href="appli.htm" class="hidden md:inline-block bg-emerald-700 text-white px-5 py-2 rounded-full hover:bg-emerald-800 shadow-md transition">Enroll Now</a>
+    <a href="appli.html" class="hidden md:inline-block bg-emerald-700 text-white px-5 py-2 rounded-full hover:bg-emerald-800 shadow-md transition">Enroll Now</a>
 
     <!-- Mobile Button -->
     <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-emerald-700 focus:outline-none">
@@ -44,14 +53,15 @@
   <!-- Mobile Menu -->
   <div id="mobile-menu" class="mobile-menu md:hidden bg-white shadow-lg">
     <div class="px-6 py-4 space-y-2 text-sm">
-      <a href="index.htm" class="mobile-menu-link block text-gray-600 hover:text-emerald-700">Home</a>
-      <a href="about.htm" class="mobile-menu-link block text-gray-600 hover:text-emerald-700">About Us</a>
+      <a href="index.html" class="mobile-menu-link block text-gray-600 hover:text-emerald-700">Home</a>
+      <a href="about.html" class="mobile-menu-link block text-gray-600 hover:text-emerald-700">About Us</a>
       <a href="#academics" class="mobile-menu-link block text-gray-600 hover:text-emerald-700">Academics</a>
       <a href="#features" class="mobile-menu-link block text-gray-600 hover:text-emerald-700">Features</a>
       <a href="#contact" class="mobile-menu-link block text-gray-600 hover:text-emerald-700">Contact</a>
-      <a href="signup.htm" class="mobile-menu-link block text-gray-600 hover:text-emerald-700">Student Portal</a>
-      <a href="gallery.htm" class="mobile-menu-link block text-gray-600 hover:text-emerald-700">Gallery</a>
-      <a href="appli.htm" class="mobile-menu-link block bg-emerald-700 text-white px-5 py-2 rounded-full text-center mt-4 hover:bg-emerald-800">Enroll Now</a>
+      <a href="signup.html" class="mobile-menu-link block text-gray-600 hover:text-emerald-700">Student Portal</a>
+      <a href="gallery.html" class="mobile-menu-link block text-gray-600 hover:text-emerald-700">Gallery</a>
+      <a href="blog.html" class="mobile-menu-link block text-gray-600 hover:text-emerald-700">Blog</a>
+      <a href="appli.html" class="mobile-menu-link block bg-emerald-700 text-white px-5 py-2 rounded-full text-center mt-4 hover:bg-emerald-800">Enroll Now</a>
     </div>
   </div>
 </nav>
@@ -137,10 +147,6 @@ document.addEventListener('DOMContentLoaded', function() {
   opacity: 0;
   transform: translateY(-10px);
 }
-.logo {
-      height: 40px; /* Adjust size of your logo */
-      width: auto;
-    }
 
 .mobile-menu-open {
   max-height: 400px;
@@ -153,33 +159,51 @@ document.addEventListener('DOMContentLoaded', function() {
   transition: color 0.2s ease-in-out;
 }
 </style>
-  <div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-sm mx-auto transform hover:scale-105 transition-transform duration-300 dark:bg-gray-800">
-    <div class="text-center">
-      <h1 class="text-3xl font-bold mb-2 text-gray-800 dark:text-white">Welcome Back</h1>
-      <p class="text-gray-500 dark:text-gray-400">Please sign in to your account</p>
+  <!-- ========================
+       SIGNUP CARD
+       ======================== -->
+  <main class="flex-grow flex items-center justify-center p-4">
+    <div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-sm mx-auto transform hover:scale-105 transition-transform duration-300 dark:bg-gray-800">
+      <div class="text-center">
+        <h1 class="text-3xl font-bold mb-2 text-gray-800 dark:text-white">Create an Account</h1>
+        <p class="text-gray-500 dark:text-gray-400">Get started by creating a new account</p>
+      </div>
+      <form class="mt-8 space-y-6" action="/api/signup" method="POST">
+        <!-- Full Name input -->
+        <div>
+          <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Full Name</label>
+          <input id="name" name="name" type="text" autocomplete="name" required
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:placeholder-gray-500">
+        </div>
+        <!-- Email address input -->
+        <div>
+          <label for="email-signup" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Email address</label>
+          <input id="email-signup" name="email" type="email" autocomplete="email" required
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:placeholder-gray-500">
+        </div>
+        <!-- Password input -->
+        <div>
+          <label for="password-signup" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Password</label>
+          <input id="password-signup" name="password" type="password" autocomplete="new-password" required
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:placeholder-gray-500">
+        </div>
+        <button type="submit"
+          class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors duration-200">
+          Sign up
+        </button>
+        <div class="text-center text-sm text-gray-500 dark:text-gray-400">
+          Already have an account?
+          <a href="/student-portal/login.html" class="font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300">Sign in</a>
+        </div>
+      </form>
     </div>
-    <form class="mt-8 space-y-6">
-      <div>
-        <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Email address</label>
-        <input id="email" name="email" type="email" autocomplete="email" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:placeholder-gray-500">
-      </div>
-      <div>
-        <label for="password" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Password</label>
-        <input id="password" name="password" type="password" autocomplete="current-password" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:placeholder-gray-500">
-      </div>
-      <div class="flex items-center justify-between text-sm">
-        <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300">Forgot your password?</a>
-      </div><a href="student.htm"></a>
-      <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors duration-200">
-        Sign in
-      </button>
-      <div class="text-center text-sm text-gray-500 dark:text-gray-400">
-        Don't have an account?
-        <a href="signup.htm" class="font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300">Sign up</a>
-      </div>
-    </form>
-  </div>
-  <footer id="contact" class="bg-white text-gray-600 py-12">
+  </main>
+
+  <!-- ========================
+       FOOTER
+       ======================== -->
+  <!-- Footer -->
+<footer id="contact" class="bg-white text-gray-600 py-12">
     <div class="container mx-auto px-6 max-w-6xl">
         <div class="md:flex md:justify-between grid grid-cols-1 md:grid-cols-3 gap-8">
             <div class="mb-6 md:mb-0">
@@ -190,14 +214,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 <p class="text-gray-500">Motto:"AL QURAN HUDAN LI NASS" Q2VS185.</p>
             </div>
             <div>
-                <h4 class="text-lg font-semibold text-emerald-900 mb-4">Quick Links</h4>
+                <h4 class="text-lg font-semibold text-emerald-900 mb-4">Quisck Links</h4>
                 <ul class="space-y-2">
-                    <li><a href="index.htm" class="hover:text-emerald-700 transition duration-300">Home</a></li>
-                    <li><a href="about.htm" class="hover:text-emerald-700 transition duration-300">About Us</a></li>
+                    <li><a href="index.html" class="hover:text-emerald-700 transition duration-300">Home</a></li>
+                    <li><a href="about.html" class="hover:text-emerald-700 transition duration-300">About Us</a></li>
                     <li><a href="#academics" class="hover:text-emerald-700 transition duration-300">Academics</a></li>
                     <li><a href="#features" class="hover:text-emerald-700 transition duration-300">Our Features</a></li>
-                    <li><a href="signup.htm" class="hover:text-emerald-700 transition duration-300">Student portal</a></li>
-                    <li><a href="gallery.htm" class="hover:text-emerald-700 transition duration-300">Gallery</a></li>
+                    <li><a href="signup.html" class="hover:text-emerald-700 transition duration-300">Student portal</a></li>
+                    <li><a href="gallery.html" class="hover:text-emerald-700 transition duration-300">Gallery</a></li>
+                    <li><a href="blog.html" class="hover:text-emerald-700 transition duration-300">Blog</a></li>
                     <li><a href="#" class="hover:text-emerald-700 transition duration-300">FAQs</a></li>
                 </ul>
             </div>
@@ -216,5 +241,10 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
 </footer>
 
+  <!-- ========================
+       JAVASCRIPT FOR MOBILE MENU
+       ======================== -->
+  
 </body>
+
 </html>

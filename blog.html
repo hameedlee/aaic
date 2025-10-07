@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Post Fetcher</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+  <style>
+    .mobile-menu {
+      transition: all 0.3s ease-in-out;
+      overflow: hidden;
+    }
+    .mobile-menu-closed {
+      max-height: 0;
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    .mobile-menu-open {
+      max-height: 400px;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .mobile-menu-link {
+      transition: color 0.2s ease-in-out;
+    }
+    .logo {
+      height: 50px;
+      width: auto;
+    }
+  </style>
+</head>
+<body class="bg-gray-100">
+
+  <!-- A "skip to main content" link is a best practice for accessibility -->
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:text-white focus:bg-emerald-700 focus:p-4">Skip to main content</a>
+
+  <header class="bg-white shadow-lg sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center py-4">
+      <div class="flex items-center space-x-2">
+        <!-- Add a descriptive alt attribute for accessibility -->
+        <img src="Untitled design.png" alt="Allahu Akbar International School Logo" class="logo" />
+      </div>
+
+      <!-- Desktop navigation -->
+      <nav class="hidden md:flex space-x-6 text-sm lg:text-base" aria-label="Main navigation">
+        <a href="about.html" class="text-gray-600 hover:text-emerald-700">About Us</a>
+        <a href="#academics" class="text-gray-600 hover:text-emerald-700">Academics</a>
+        <a href="#features" class="text-gray-600 hover:text-emerald-700">Features</a>
+        <a href="#contact" class="text-gray-600 hover:text-emerald-700">Contact</a>
+        <a href="signup.html" class="text-gray-600 hover:text-emerald-700">Student Portal</a>
+        <a href="gallery.html" class="text-gray-600 hover:text-emerald-700">Gallery</a>
+        <a href="blog.html" class="text-gray-600 hover:text-emerald-700">Blog</a>
+      </nav>
+
+      <a href="appli.html" class="hidden md:inline-block bg-emerald-700 text-white px-5 py-2 rounded-full hover:bg-emerald-800 shadow-md transition">Enroll Now</a>
+
+      <!-- Mobile menu button, with ARIA attributes for accessibility -->
+      <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-emerald-700 focus:outline-none" aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle mobile menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          <path id="close-icon" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile navigation -->
+    <nav id="mobile-menu" class="mobile-menu mobile-menu-closed md:hidden bg-white shadow-lg">
+      <div class="px-6 py-4 space-y-2 text-sm">
+        <a href="index.html" class="mobile-menu-link block text-gray-600 hover:text-emerald-700">Home</a>
+        <a href="about.html" class="mobile-menu-link block text-gray-600 hover:text-emerald-700">About Us</a>
+        <a href="#academics" class="mobile-menu-link block text-gray-600 hover:text-emerald-700">Academics</a>
+        <a href="#features" class="mobile-menu-link block text-gray-600 hover:text-emerald-700">Features</a>
+        <a href="#contact" class="mobile-menu-link block text-gray-600 hover:text-emerald-700">Contact</a>
+        <a href="signup.html" class="mobile-menu-link block text-gray-600 hover:text-emerald-700">Student Portal</a>
+        <a href="gallery.html" class="mobile-menu-link block text-gray-600 hover:text-emerald-700">Gallery</a>
+        <a href="blog.html" class="mobile-menu-link block text-gray-600 hover:text-emerald-700">Blog</a>
+        <a href="appli.html" class="mobile-menu-link block bg-emerald-700 text-white px-5 py-2 rounded-full text-center mt-4 hover:bg-emerald-800">Enroll Now</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content" class="container mx-auto mt-12">
+    <section class="text-center mb-12">
+      <h1 class="text-4xl font-bold text-gray-800 mb-4">Blog Post Fetcher</h1>
+      <p class="text-gray-600 mb-6">Click the button below to fetch and display blog posts from the Blogger API</p>
+      <button id="blog-link" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg">
+        Fetch Blog Posts
+      </button>
+    </section>
+
+    <div id="loading" class="hidden text-center py-8">
+      <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+      <p class="mt-4 text-gray-600">Loading blog posts...</p>
+    </div>
+
+    <!-- Blog Post Detail View -->
+    <article id="post-detail" class="hidden max-w-4xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden mb-8">
+      <button id="back-to-posts" class="m-6 bg-gray-600 hover:bg-gray-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200">
+        ← Back to Posts
+      </button>
+      <div id="post-detail-content" class="px-6 pb-6">
+        <!-- Full post content will be inserted here -->
+      </div>
+    </article>
+
+    <section id="posts-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Blog posts will be dynamically inserted here -->
+    </section>
+  </main>
+
+  <footer id="contact" class="bg-white text-gray-600 py-12 mt-12">
+    <div class="container mx-auto px-6 max-w-6xl">
+      <div class="md:flex md:justify-between grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="mb-6 md:mb-0">
+          <div class="flex items-center space-x-2 mb-4">
+            <svg class="w-8 h-8 text-emerald-700" fill="currentColor" viewBox="0 0 20 20"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path></svg>
+            <span class="text-2xl font-semibold text-emerald-900 font-arabic">Allahu Akbar <br>International School</span>
+          </div>
+          <p class="text-gray-500">Motto:"AL QURAN HUDAN LI NASS" Q2VS185.</p>
+        </div>
+
+        <div>
+          <h4 class="text-lg font-semibold text-emerald-900 mb-4">Quick Links</h4>
+          <nav aria-label="Quick links navigation">
+            <ul class="space-y-2">
+              <li><a href="index.html" class="hover:text-emerald-700 transition duration-300">Home</a></li>
+              <li><a href="about.html" class="hover:text-emerald-700 transition duration-300">About Us</a></li>
+              <li><a href="#academics" class="hover:text-emerald-700 transition duration-300">Academics</a></li>
+              <li><a href="#features" class="hover:text-emerald-700 transition duration-300">Our Features</a></li>
+              <li><a href="signup.html" class="hover:text-emerald-700 transition duration-300">Student portal</a></li>
+              <li><a href="gallery.html" class="hover:text-emerald-700 transition duration-300">Gallery</a></li>
+              <li><a href="blog.html" class="hover:text-emerald-700 transition duration-300">Blog</a></li>
+              <li><a href="#" class="hover:text-emerald-700 transition duration-300">FAQs</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <div>
+          <h4 class="text-lg font-semibold text-emerald-900 mb-4">Contact</h4>
+          <address class="space-y-2 not-italic">
+            <p>21, Ajegunle Street, Sagamu, Ogun State, Nigeria. </p>
+            <p>0803 351 9155, 0813 938 1306</p>
+            <p><a href="mailto:allahuakbarschools@gmail.com" class="hover:text-emerald-700">allahuakbarschools@gmail.com</a></p>
+          </address>
+        </div>
+      </div>
+      <div class="mt-8 pt-8 border-t border-gray-200 text-center">
+        <p>&copy; 2025 Allahu Akbar International School. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="b_script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const mobileMenuButton = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const menuIcon = document.getElementById('menu-icon');
+      const closeIcon = document.getElementById('close-icon');
+      const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
+
+      // Function to toggle mobile menu
+      function toggleMobileMenu() {
+        const isOpen = mobileMenu.classList.contains('mobile-menu-open');
+        if (isOpen) {
+          closeMobileMenu();
+        } else {
+          openMobileMenu();
+        }
+      }
+
+      // Function to open mobile menu
+      function openMobileMenu() {
+        mobileMenu.classList.remove('mobile-menu-closed');
+        mobileMenu.classList.add('mobile-menu-open');
+        menuIcon.classList.add('hidden');
+        closeIcon.classList.remove('hidden');
+        mobileMenuButton.setAttribute('aria-expanded', 'true');
+      }
+
+      // Function to close mobile menu
+      function closeMobileMenu() {
+        mobileMenu.classList.remove('mobile-menu-open');
+        mobileMenu.classList.add('mobile-menu-closed');
+        menuIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+        mobileMenuButton.setAttribute('aria-expanded', 'false');
+      }
+
+      // Mobile menu button click
+      mobileMenuButton.addEventListener('click', toggleMobileMenu);
+
+      // Close mobile menu when clicking on links (for md screens and below)
+      mobileMenuLinks.forEach(link => {
+        link.addEventListener('click', function() {
+          if (window.innerWidth < 768) {
+            closeMobileMenu();
+          }
+        });
+      });
+
+      // Close mobile menu when clicking outside
+      document.addEventListener('click', function(event) {
+        const isClickInsideNav = event.target.closest('header');
+        const isMenuOpen = mobileMenu.classList.contains('mobile-menu-open');
+        if (!isClickInsideNav && isMenuOpen && window.innerWidth < 768) {
+          closeMobileMenu();
+        }
+      });
+
+      // Close mobile menu on window resize if screen becomes larger
+      window.addEventListener('resize', function() {
+        if (window.innerWidth >= 768) {
+          closeMobileMenu();
+        }
+      });
+
+      // Initialize menu as closed
+      closeMobileMenu();
+    });
+  </script>
+</body>
+</html>
