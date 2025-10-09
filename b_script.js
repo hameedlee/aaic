@@ -119,27 +119,24 @@ function showPostDetail(post) {
         </article>
     `;
 
-    // Hide posts container and show post detail
     postsContainer.style.display = 'none';
     postDetail.classList.remove('hidden');
-    
-    // Scroll to top
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function showPostsList() {
-    // Hide post detail and show posts container
     postDetail.classList.add('hidden');
     postsContainer.style.display = 'grid';
 }
 
-blogLink.addEventListener('click', (event) => {
-    event.preventDefault();
-    fetchBlogPosts();
-});
-
 backToPostsBtn.addEventListener('click', () => {
     showPostsList();
+});
+
+// ✅ Automatically fetch posts when page loads
+window.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('blog-link').style.display = 'none'; // hide button
+    fetchBlogPosts(); // auto load blog posts
 });
 
 // Add some CSS for line clamping and prose styling
